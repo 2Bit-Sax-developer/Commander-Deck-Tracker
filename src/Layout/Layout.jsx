@@ -12,10 +12,10 @@ export default function Layout(){
         <DeckContext.Provider value={value}>
             <div className="container py-3">
                 <nav className="navbar navbar-expand bg-light rounded mb-3 px-3">
-                    <Link className="navbar-brand" to="/">2 Bit Commander Deck Tracker</Link>
+                    <Link className="navbar-brand" to="/"><strong>Commander Deck Tracker</strong></Link>
                     <div className="navbar-nav">
                         <Link className="nav-link" to="/">Home</Link>
-                        {/*<Link className="nav-link" to="/movies">Movies</Link>*/}
+                        <Link className="nav-link" to="/decks">Decks</Link>
                     </div>
                 </nav>
                 <Outlet/>
