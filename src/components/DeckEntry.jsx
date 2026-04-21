@@ -11,6 +11,7 @@ export default function DeckEntry({ deck }){
                 <p className="card-text mb-1"><strong>Commander:</strong> {deck.commander}</p>
                 <div>
                     <span className="badge text-bg-secondary">Bracket: {deck.bracket}</span>
+                    <span className="badge text-bg-secondary">{deck.colours.join(", ")}</span>
                 </div>
             </div>
             <div className="card-footer d-flex justify-content-between">
