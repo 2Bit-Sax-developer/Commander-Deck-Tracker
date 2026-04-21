@@ -13,8 +13,8 @@ export default function AppRoutes(){
         <Routes>
             <Route path="/" element={<Layout/>} >
                 <Route index element={<Home/>} />
-                <Route path='decks' element={<Decks/>}/>
-                <Route path='decks/:id' element={<DeckDetail/>}/>
+                {/*<Route path='decks' element={<Decks/>}/>}
+                {<Route path='decks/:id' element={<DeckDetail/>}/>*/}
                 { /*<Route path='favorites' element={<Favorites/>}/>*/ }
                 <Route path='*' element={<NotFound/>}/>
             </Route>
