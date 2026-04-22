@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 const STORAGE_KEY = '2bit_deck_tracker';
 
-const seed = DECKS = [
+const seed = [
     { id: 1, name: "Local Dragon Terraforms and Reanimates", commander: "Teval, the Balanced Scale", colours: [ "Green", "Black", "Blue" ], bracket: 4, wins: 5, losses: 15, decklist: "https://moxfield.com/decks/lPHJAMqcGEmXdL31tJZGpw" },
     { id: 2, name: "Sugar Momma Jolene, What a Queen", commander: "Jolene the Plunder Queen", colours: [ "Green", "Red" ], bracket: 3, wins: 7, losses: 4, decklist: "https://moxfield.com/decks/vKfyADqzGUicxQR2OMhLWg" },
     { id: 3, name: "SPAAAAAACCEEEEEE", commander: "Inspirt, Flagship Vessel", colours: [ "Red", "Blue", "White" ], bracket: 2, wins: 2, losses: 8, decklist: "https://moxfield.com/decks/32L2ONqE4kelGFLDrc_5hg" },
@@ -49,6 +49,10 @@ export default function useDecks() {
     
   }, [decks]);
 
+  function getDeck(id){
+    return decks.find(d => d.id === Number(id));
+  }
+
   function addDeck(data){
 
     setDecks(prev => [...prev, data]);
@@ -58,7 +62,7 @@ export default function useDecks() {
     setDecks(prev => prev.map(p => (p.id === id ? {...p, ...patch} : p)));
   }
 
-  function deleteDeck(data){
+  function deleteDeck(id){
     setDecks(prev => prev.filter(p => p.id != id));
   }
 
@@ -71,6 +75,7 @@ export default function useDecks() {
   return {
     decks, setDecks,
     query, setQuery,
+    getDeck,
     addDeck,
     updateDeck,
     deleteDeck,

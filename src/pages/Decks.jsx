@@ -1,9 +1,11 @@
 import React from 'react'
-//import {DECKS} from '../decks'
-//import {decks, useDecks} from '../hooks/useDecks'
+import { useDecksContext } from "../context/DecksContext";
 import DeckEntry from '../components/DeckEntry'
 
-export default function Decks( {decks} ){
+export default function Decks(){
+
+    const { decks } = useDecksContext();
+
     return(
         <div>
             <h2>Decks</h2>
