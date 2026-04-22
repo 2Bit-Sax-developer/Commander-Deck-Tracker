@@ -15,7 +15,7 @@ export default function DeckDetail(){
     )
 
     const gamesPlayed = deck.wins + deck.losses;
-    const winRate = (deck.wins/gamesPlayed)*100;
+    const winRate = (deck.wins === 0)? 0 : (deck.wins/gamesPlayed)*100;
 
     return (
         <div className="card">
