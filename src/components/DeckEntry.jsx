@@ -14,7 +14,7 @@ export default function DeckEntry({ deck }){
                 </div>
             </div>
             <div className="card-footer d-flex justify-content-between">
-                <a className="btn btn-sm btn-outline-secondary" target="_blank" href={deck.decklist}>Moxfield</a>
+                { deck.decklist!= null ? <a className="btn btn-sm btn-outline-secondary" target="_blank" href={deck.decklist}>Moxfield</a> : <div/>}
                 <Link className="btn btn-sm btn-outline-secondary" to={`/decks/${deck.id}`}>See Details</Link>
             </div>
         </div>

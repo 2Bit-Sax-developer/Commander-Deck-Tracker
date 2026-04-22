@@ -15,6 +15,7 @@ export default function useDecks() {
 
     const [decks, setDecks] = useState([]);
     const [query, setQuery] = useState('');
+    const colours = [ "Green", "Black", "Red", "Blue", "White" ];
 
     useEffect(() => {
     try {
@@ -62,6 +63,11 @@ export default function useDecks() {
     setDecks(prev => prev.map(p => (p.id === id ? {...p, ...patch} : p)));
   }
 
+  function saveDeck(id, data){
+
+    (id)? updateDeck(id, data) : addDeck(data);
+  }
+
   function deleteDeck(id){
     setDecks(prev => prev.filter(p => p.id != id));
   }
@@ -75,11 +81,11 @@ export default function useDecks() {
   return {
     decks, setDecks,
     query, setQuery,
+    colours,
     getDeck,
-    addDeck,
-    updateDeck,
+    saveDeck,
     deleteDeck,
-    resetStorage
+    resetStorage,
   }
 }
 

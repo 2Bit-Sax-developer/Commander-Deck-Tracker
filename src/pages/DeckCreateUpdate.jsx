@@ -7,17 +7,14 @@ export default function CreateUpdateDeck() {
 
   const { id } = useParams()
   const navigate = useNavigate()
-  const { getDeck, addDeck, updateDeck} = useDecksContext();
+  const { getDeck, saveDeck} = useDecksContext();
   
   const deck = getDeck(id);
-  // TODO: if id present, preload data and onSave should update; else create
-
-  //console.log(id);
 
   return (
     <div>
       <h2 className="h5 mb-3">{id ? 'Edit Deck' : 'Create Deck'}</h2>
-      <DeckForm initial={ deck } onSave={id? updateDeck : addDeck} onCancel={() => navigate(-1)} />
+      <DeckForm initial={ deck } onSave={ saveDeck } onCancel={() => navigate(-1)} />
     </div>
   )
 }
