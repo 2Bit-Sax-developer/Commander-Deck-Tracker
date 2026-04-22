@@ -1,3 +1,11 @@
+/*
+File: decks.js
+Description: Data file containing sample deck entries
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 export const DECKS = [
     { id: 1, name: "Local Dragon Terraforms and Reanimates", commander: "Teval, the Balanced Scale", colours: [ "Green", "Black", "Blue" ], bracket: 4, wins: 5, losses: 15, decklist: "https://moxfield.com/decks/lPHJAMqcGEmXdL31tJZGpw" },
     { id: 2, name: "Sugar Momma Jolene, What a Queen", commander: "Jolene the Plunder Queen", colours: [ "Green", "Red" ], bracket: 3, wins: 7, losses: 4, decklist: "https://moxfield.com/decks/vKfyADqzGUicxQR2OMhLWg" },

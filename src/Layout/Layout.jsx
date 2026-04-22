@@ -1,3 +1,11 @@
+/*
+File: Layout.jsx
+Description: Layout component
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React, {useState, useMemo} from 'react'
 import {Link, Outlet} from 'react-router-dom'
 //import {DECKS} from '../decks'

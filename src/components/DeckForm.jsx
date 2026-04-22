@@ -1,3 +1,11 @@
+/*
+File: DeckForm.jsx
+Description: Form for creating and updating Decks
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React from 'react';
 import InputField from './InputField';
 import MultiSelectField from './MultiSelectField';
@@ -63,11 +71,25 @@ const validators = {
     }
 }
 
-export default function DeckForm( {initial, onSave, onCancel} ){
+const defaultDeck = {
+  name: "",
+  commander: "",
+  bracket: 1,
+  colours: [],
+  decklist: "",
+  wins: 0,
+  losses: 0
+};
+
+export default function DeckForm( { deckID = null, initial = defaultDeck, onSave, onCancel} ){
 
   const {values, errors, touched, handleChange, handleBlur, validateAll} = useFormValidation(initial, validators);
 
-  const { colours } = useDecksContext();
+  const { colours, decks } = useDecksContext();
+
+  const nextID = (decks.length == 0)? 1 : decks.length;
+
+  const id = deckID ?? nextID;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -76,24 +98,31 @@ export default function DeckForm( {initial, onSave, onCancel} ){
 
     if(Object.values(es).every(v => !v)){
 
-      onSave(values);
+      values.id = parseInt(id);
 
+      values.bracket = parseInt(values.bracket);
+      values.wins = parseInt(values.wins);
+      values.losses = parseInt(values.losses);
+
+      (deckID == null)? onSave(values) : onSave(id, values);
+
+      onCancel();
     }
 
   }
 
    return (
     <form className="row g-3" onSubmit={handleSubmit} noValidate>
-      <InputField size={"md-6"} label="Deck Name" value={values.name} onChange={v=>handleChange('name',v)} onBlur={()=>handleBlur('name')} error={touched.name && errors.name} placeholder=""></InputField>
-      <InputField size={"md-6"} label="Commander" value={values.commander} onChange={v=>handleChange('commander',v)} onBlur={()=>handleBlur('commander')} error={touched.commander && errors.commander} placeholder=""></InputField>
-      <InputField size={"md-3"} label="Deck Bracket" value={values.bracket} onChange={v=>handleChange('bracket',v)} onBlur={()=>handleBlur('bracket')} error={touched.bracket && errors.bracket} placeholder="1-5"></InputField>
+      <InputField size={"md-6"}  label="Deck Name" value={values.name} onChange={v=>handleChange('name',v)} onBlur={()=>handleBlur('name')} error={touched.name && errors.name} placeholder=""></InputField>
+      <InputField size={"md-6"}  label="Commander" value={values.commander} onChange={v=>handleChange('commander',v)} onBlur={()=>handleBlur('commander')} error={touched.commander && errors.commander} placeholder=""></InputField>
+      <InputField size={"md-3"}  label="Deck Bracket" value={values.bracket} onChange={v=>handleChange('bracket',v)} onBlur={()=>handleBlur('bracket')} error={touched.bracket && errors.bracket} placeholder="1-5"></InputField>
       <MultiSelectField size={"md-9"} label="Colour Identity" value={values.colours} options={colours} onChange={v=>handleChange('colours',v)} onBlur={()=>handleBlur('colours')} error={touched.colours && errors.colours} placeholder="Choose Colours"></MultiSelectField>
       <InputField size={"md-6"} label="Decklist (Moxfield)" value={values.decklist} onChange={v=>handleChange('decklist',v)} onBlur={()=>handleBlur('decklist')} error={touched.decklist && errors.decklist} placeholder=""></InputField>
-      <InputField size={"md-3"} label="Games Won" value={values.wins} onChange={v=>handleChange('wins',v)} onBlur={()=>handleBlur('wins')} error={touched.wins && errors.wins} placeholder=""></InputField>
-      <InputField size={"md-3"} label="Games Lost" value={values.losses} onChange={v=>handleChange('losses',v)} onBlur={()=>handleBlur('losses')} error={touched.losses && errors.losses} placeholder=""></InputField>
+      <InputField size={"md-3"}  label="Games Won" value={values.wins} onChange={v=>handleChange('wins',v)} onBlur={()=>handleBlur('wins')} error={touched.wins && errors.wins} placeholder=""></InputField>
+      <InputField size={"md-3"}  label="Games Lost" value={values.losses} onChange={v=>handleChange('losses',v)} onBlur={()=>handleBlur('losses')} error={touched.losses && errors.losses} placeholder=""></InputField>
       <div className="col-12 d-flex gap-2">
+        <button type="button" className="btn btn-outline-secondary" onClick={onCancel}>Cancel</button>
         <button className="btn btn-primary" type="submit">Save</button>
-        {/*TODO: Cancel button in edit mode*/}
       </div>
     </form>
   )

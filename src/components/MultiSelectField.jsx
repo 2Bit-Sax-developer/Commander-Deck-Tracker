@@ -1,3 +1,11 @@
+/*
+File: MultiSelectField.jsx
+Description: Component for multi-select field
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React from 'react'
 
 export default function MultiSelectField({ size, label, value, options, onChange, onBlur, error, placeholder }) {

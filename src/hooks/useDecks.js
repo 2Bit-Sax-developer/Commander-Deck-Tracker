@@ -1,3 +1,11 @@
+/*
+File: useDecks.js 
+Description: Hook for handling decks within the app
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import { useEffect, useState } from 'react'
 
 const STORAGE_KEY = '2bit_deck_tracker';
@@ -51,31 +59,27 @@ export default function useDecks() {
   }, [decks]);
 
   function getDeck(id){
-    return decks.find(d => d.id === Number(id));
+    return decks.find(d => d.id === parseInt(id));
   }
 
   function addDeck(data){
 
     setDecks(prev => [...prev, data]);
+    
   }
 
   function updateDeck(id, patch){
-    setDecks(prev => prev.map(p => (p.id === id ? {...p, ...patch} : p)));
-  }
-
-  function saveDeck(id, data){
-
-    (id)? updateDeck(id, data) : addDeck(data);
+    setDecks(prev => prev.map(p => (p.id === parseInt(id) ? {...p, ...patch} : p)));
   }
 
   function deleteDeck(id){
-    setDecks(prev => prev.filter(p => p.id != id));
+    setDecks(prev => prev.filter(p => p.id != parseInt(id)));
   }
 
   function resetStorage() {
 
     localStorage.removeItem(STORAGE_KEY);
-    setDecks([]);
+    setDecks(seed);
   }
 
   return {
@@ -83,7 +87,8 @@ export default function useDecks() {
     query, setQuery,
     colours,
     getDeck,
-    saveDeck,
+    addDeck,
+    updateDeck,
     deleteDeck,
     resetStorage,
   }

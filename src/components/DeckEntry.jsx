@@ -1,3 +1,11 @@
+/*
+File: DeckEntry.jsx
+Description: Component for displaying deck entries
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React, {useContext} from 'react'
 import {Link} from 'react-router-dom'
 

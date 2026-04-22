@@ -1,3 +1,11 @@
+/*
+File: decksContext.jsx
+Description: Context provider for decks
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import { createContext, useContext } from "react";
 import useDecks from "../hooks/useDecks";
 

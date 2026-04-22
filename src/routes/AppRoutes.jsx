@@ -1,3 +1,11 @@
+/*
+File: AppRoutes.jsx
+Description: Application routes configuration
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 import Layout from '../Layout/Layout'

@@ -1,3 +1,11 @@
+/*
+File: NotFound.jsx
+Description: Not found page component
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React from "react"
 import { Link } from "react-router-dom"
 

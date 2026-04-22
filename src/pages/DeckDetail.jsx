@@ -1,3 +1,11 @@
+/*
+File: DeckDetail.jsx
+Description: Page Displaying all of the details regarding a deck.
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React, {useContext} from 'react'
 import {useParams, useNavigate, Link} from 'react-router-dom'
 import { useDecksContext } from "../context/DecksContext";
@@ -6,7 +14,7 @@ export default function DeckDetail(){
 
     const { id } = useParams();
     const navigate = useNavigate();
-    const { getDeck } = useDecksContext();
+    const { getDeck, deleteDeck } = useDecksContext();
 
     const deck = getDeck(id);
 

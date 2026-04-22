@@ -1,6 +1,14 @@
+/*
+File: InputField.jsx
+Description: Component for input field
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
 import React from 'react'
 
-export default function InputField({ size, label, value, onChange, onBlur, error, placeholder }) {
+export default function InputField({ size, label, type, value, onChange, onBlur, error, placeholder }) {
   
   return (<div className={"col-" + size}>
     <label className="form-label">{label}</label>

@@ -1,4 +1,12 @@
-import {useState} from 'react'
+/*
+File: useFormValidation.js
+Description: Hook for form validation
+Student: Thomas McLean
+Student Number: 100818706
+Date: 2026-04-21
+*/
+
+import {useState, useEffect} from 'react'
 
 export default function useFormValidation( initialValues, validators){
 
